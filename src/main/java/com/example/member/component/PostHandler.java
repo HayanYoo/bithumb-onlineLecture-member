@@ -19,24 +19,6 @@ public class PostHandler {
     private final WebClient webClient;
     private final MemberService memberService;
 
-    //
-//    public Mono<ServerResponse> createHello(ServerRequest serverRequest) {
-//        String name = serverRequest.queryParam("name").orElse("");
-//        Mono<InfoDto> infoDtoMono = webClient.get()
-//                                        .uri(uriBuilder ->
-//                                                uriBuilder.path("/info-service/uri")
-//                                                        .queryParam("name", name)
-//                                                        .build()
-//                                        ).retrieve().bodyToMono(InfoDto.class);
-//
-//        Mono<HelloResponse> map = infoDtoMono.map(it -> new HelloResponse(name, it.getJob()));
-//
-//        return ServerResponse
-//                .ok()
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .body(map, HelloResponse.class);
-//    }
-//
     public Mono<ServerResponse> login(ServerRequest serverRequest) {
 
         Mono<MemberDto> memberDto = memberService.login(serverRequest)
