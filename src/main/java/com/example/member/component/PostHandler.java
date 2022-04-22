@@ -39,34 +39,34 @@ public class PostHandler {
 //
     public Mono<ServerResponse> login(ServerRequest serverRequest) {
 
-        Mono<MemberDto> MemberDto = memberService.login(serverRequest)
+        Mono<MemberDto> memberDto = memberService.login(serverRequest)
                 .map(member -> new MemberDto(member));
 
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(MemberDto, MemberDto.class);
+                .body(memberDto, MemberDto.class);
     }
 
     public Mono<ServerResponse> registerStudent(ServerRequest serverRequest) {
 
-        Mono<MemberDto> MemberDto = memberService.registerStudent(serverRequest, AuthType.STUDENT)
+        Mono<MemberDto> memberDto = memberService.registerStudent(serverRequest, AuthType.STUDENT)
                 .map(member -> new MemberDto(member));
 
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(MemberDto, MemberDto.class);
+                .body(memberDto, MemberDto.class);
     }
 
     public Mono<ServerResponse> registerTeacher(ServerRequest serverRequest) {
 
-        Mono<MemberDto> MemberDto = memberService.registerTeacher(serverRequest, AuthType.TEACHER)
+        Mono<MemberDto> memberDto = memberService.registerTeacher(serverRequest, AuthType.TEACHER)
                 .map(member -> new MemberDto(member));
 
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(MemberDto, MemberDto.class);
+                .body(memberDto, MemberDto.class);
     }
 }
